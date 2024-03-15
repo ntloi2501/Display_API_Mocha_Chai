@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/home.css">
+<style>
+  table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: #ccc;}
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.table-container {
+  padding: 15px 20px;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+  <a class="active" href="">Home</a>
+  <a href="/search">Search</a>
+  <a href="/create">Create</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
+<div style="padding-left:16px">
+  <h2>Welcome to API With MongooseDB</h2>
+  <h3>Created By:<a href="https://www.facebook.com/nguyen.t.loi.25/" class="facebook-link" target="_blank">Let's Go To My Social Media</a></h3>
+ 
+  <p>Some content..</p>
+  <div class="table-container">
+    <div class="title">List Student</div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>StudentID</th>
+        <th>CourseID</th>
+        <th>Grade</th>
+        <th>Action</th>
+        <% listStudent.forEach(function(student) { %>
+          <tr>
+            <td><%= student.id %></td>
+            <td><%= student.studentId %></td>
+            <td><%= student.courseId %></td>
+            <td><%= student.grade %></td>
+            <td>
+              <a href="/update/<%= student.id %>">Edit</a>
+            <form action="delete-student/<%= student.id %>" method="post">
+            <button>Delete</button>
+          </form>
+        </td>
+        </tr>
+      <% }) %>
+    </table>
+</div>
+</div>
+</body>
+</html>
